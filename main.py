@@ -8,8 +8,6 @@ from gatus import get_service_status, get_service_group, GatusStatusError, nanos
 bot = discord.Client(intents=discord.Intents.default())
 tree = app_commands.CommandTree(bot)
 
-guild = ""
-
 
 @tree.command(name="health", description="Check the health of a specific service")
 async def health(interaction: discord.Interaction, service_name: str):
@@ -85,7 +83,7 @@ async def ghealth(interaction: discord.Interaction, group_name: str):
 
 @bot.event
 async def on_ready():
-    await tree.sync(guild=discord.Object(id=1285980705456918568))
+    await tree.sync()
     print("Ready!")
 
 # Run the bot
