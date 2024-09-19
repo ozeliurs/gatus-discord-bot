@@ -65,6 +65,3 @@ class TestGatusGroupHealthEmbed(unittest.TestCase):
         embed = GatusGroupHealthEmbed("TestGroup", [self.mock_service])
         self.assertEqual(embed.fields[1].name, "TestService")
         self.assertEqual(embed.fields[1].value, EMOJI_SUCCESS)
-
-if __name__ == '__main__':
-    unittest.main()
