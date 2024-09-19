@@ -23,8 +23,10 @@ To run this Docker image, follow these steps:
 
 ## Environment Variables
 
-- `GATUS_API_URL`: The URL of your Gatus API
-- `DISCORD_BOT_TOKEN`: Your Discord bot token
+| Variable | Description |
+|----------|-------------|
+| `GATUS_API_URL` | The URL of your Gatus API |
+| `DISCORD_BOT_TOKEN` | Your Discord bot token |
 
 ## Notes
 
