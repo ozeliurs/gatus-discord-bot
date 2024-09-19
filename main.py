@@ -86,5 +86,10 @@ async def on_ready():
     await tree.sync()
     print("Ready!")
 
+@bot.event
+async def on_guild_join(guild):
+    await tree.sync(guild=guild)
+    print(f"Synced commands to guild: {guild.name}")
+
 # Run the bot
 bot.run(DISCORD_BOT_TOKEN)
