@@ -41,14 +41,14 @@ class TestConfig(unittest.TestCase):
         self.assertEqual(config.GATUS_API_URL, "http://example.com/api")
 
     def test_gatus_api_url_with_trailing_slash(self):
-        os.environ["GATUS_API_URL"] = "http://example.com/"
+        os.environ["GATUS_API_URL"] = "https://example.com/"
         config = self.reload_config()
-        self.assertEqual(config.GATUS_API_URL, "http://example.com/api")
+        self.assertEqual(config.GATUS_API_URL, "https://example.com/api")
 
     def test_gatus_api_url_with_api(self):
-        os.environ["GATUS_API_URL"] = "http://example.com/api"
+        os.environ["GATUS_API_URL"] = "https://example.com/api"
         config = self.reload_config()
-        self.assertEqual(config.GATUS_API_URL, "http://example.com/api")
+        self.assertEqual(config.GATUS_API_URL, "https://example.com/api")
 
     def test_discord_bot_token(self):
         os.environ["DISCORD_BOT_TOKEN"] = "test_token"
