@@ -4,6 +4,11 @@ import requests
 from config import DISCORD_BOT_TOKEN
 from gatus import get_service_status, get_service_group, GatusStatusError, nanoseconds_to_human_readable
 
+# Define constants for emojis
+EMOJI_SUCCESS = ":white_check_mark:"
+EMOJI_FAILURE = ":x:"
+EMOJI_WARNING = ":warning:"
+EMOJI_HELMET = ":helmet_with_white_cross:"
 
 bot = discord.Client(intents=discord.Intents.default())
 tree = app_commands.CommandTree(bot)
@@ -16,7 +21,7 @@ class GatusEmbed(discord.Embed):
 class GatusHealthEmbed(GatusEmbed):
     def __init__(self, service_status):
         embed_color = discord.Color.green() if service_status.status[-1].success else discord.Color.red()
-        super().__init__(title=":helmet_with_white_cross: **Gatus**",
+        super().__init__(title=f"{EMOJI_HELMET} **Gatus**",
                          description=f"Status for **{service_status.monitor_group}/{service_status.monitor_name}**",
                          color=embed_color)
 
@@ -25,12 +30,12 @@ class GatusHealthEmbed(GatusEmbed):
         self._add_ping_info(service_status)
 
     def _add_status(self, service_status):
-        status_emoji = ":white_check_mark:" if service_status.status[-1].success else ":x:"
+        status_emoji = EMOJI_SUCCESS if service_status.status[-1].success else EMOJI_FAILURE
         status_text = "UP" if service_status.status[-1].success else "DOWN"
         self.add_field(name="Status", value=f"{status_emoji} {status_text}", inline=False)
 
     def _add_history(self, service_status):
-        status_history = "".join(":white_check_mark:" if status.success else ":x:" for status in service_status.status)
+        status_history = "".join(EMOJI_SUCCESS if status.success else EMOJI_FAILURE for status in service_status.status)
         self.add_field(name="History", value=status_history, inline=False)
 
     def _add_ping_info(self, service_status):
@@ -51,15 +56,15 @@ class GatusHealthEmbed(GatusEmbed):
 
     def _get_ping_emoji(self, ping, good_threshold, warning_threshold):
         if ping < good_threshold:
-            return ":white_check_mark:"
+            return EMOJI_SUCCESS
         elif ping < warning_threshold:
-            return ":warning:"
+            return EMOJI_WARNING
         else:
-            return ":x:"
+            return EMOJI_FAILURE
 
 class GatusGroupHealthEmbed(GatusEmbed):
     def __init__(self, group_name, service_group):
-        super().__init__(title=":helmet_with_white_cross: **Gatus Group Health**",
+        super().__init__(title=f"{EMOJI_HELMET} **Gatus Group Health**",
                          description=f"Status for group **{group_name}**",
                          color=discord.Color.blue())
 
@@ -71,20 +76,20 @@ class GatusGroupHealthEmbed(GatusEmbed):
         all_down = all(not service.status[-1].success for service in service_group)
 
         if all_up:
-            status_emoji = ":white_check_mark:"
+            status_emoji = EMOJI_SUCCESS
             self.color = discord.Color.green()
         elif all_down:
-            status_emoji = ":x:"
+            status_emoji = EMOJI_FAILURE
             self.color = discord.Color.red()
         else:
-            status_emoji = ":warning:"
+            status_emoji = EMOJI_WARNING
             self.color = discord.Color.yellow()
 
         self.add_field(name="Group Status", value=status_emoji, inline=False)
 
     def _add_service_statuses(self, service_group):
         for service in service_group:
-            status_history = "".join(":white_check_mark:" if status.success else ":x:" for status in service.status)
+            status_history = "".join(EMOJI_SUCCESS if status.success else EMOJI_FAILURE for status in service.status)
             self.add_field(name=f"{service.monitor_name}", value=status_history, inline=False)
 
 @tree.command(name="health", description="Check the health of a specific service")
