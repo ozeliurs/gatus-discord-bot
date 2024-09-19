@@ -49,7 +49,7 @@ class TestGatusStatusFunctions(unittest.TestCase):
         self.assertEqual(result.monitor_group, "group1")
         self.assertEqual(len(result.status), 1)
         self.assertEqual(result.status[0].duration, 100)
-        self.assertEqual(result.status[0].success, True)
+        self.assertTrue(result.status[0].success)
         self.assertEqual(result.status[0].timestamp, 1234567890)
 
     @patch('src.gatus.get_status')
