@@ -10,8 +10,6 @@
 [![Lines of Code](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=ncloc&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
 [![Duplicated Lines (%)](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=duplicated_lines_density&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
 
-
-
 This Docker image contains a Discord bot that integrates with Gatus for monitoring purposes.
 
 ## Running the Docker Image
