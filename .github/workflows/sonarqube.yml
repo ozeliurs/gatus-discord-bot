@@ -27,7 +27,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests with coverage
-        run: pytest --cov=./ --cov-report=xml
+        run: pytest --cov-config=.coveragerc --cov-report=xml
 
       - uses: sonarsource/sonarqube-scan-action@master
         env:
