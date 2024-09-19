@@ -1,5 +1,17 @@
 # Gatus Discord Bot
 
+[![Quality Gate Status](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=alert_status&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
+[![Maintainability Rating](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=sqale_rating&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
+[![Reliability Rating](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=reliability_rating&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
+[![Security Rating](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=security_rating&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
+
+[![Coverage](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=coverage&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
+[![Technical Debt](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=sqale_index&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
+[![Lines of Code](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=ncloc&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
+[![Duplicated Lines (%)](https://sonarqube.devops-tools.apoorva64.com/api/project_badges/measure?project=Gatus-Discord-Bot&metric=duplicated_lines_density&token=sqb_a337794bbf49e6f4cf41ed9be7420fbbfd413162)](https://sonarqube.devops-tools.apoorva64.com/dashboard?id=Gatus-Discord-Bot)
+
+
+
 This Docker image contains a Discord bot that integrates with Gatus for monitoring purposes.
 
 ## Running the Docker Image
