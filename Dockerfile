@@ -7,8 +7,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY *.py /app/
+COPY src /app/
 
 USER nonroot
 
-CMD ["python", "main.py"]
+CMD ["python", "src/main.py"]

@@ -3,7 +3,7 @@ from typing import List
 
 import requests
 
-from config import GATUS_API_URL
+from src.config import GATUS_API_URL
 
 
 class GatusStatusError(Exception):

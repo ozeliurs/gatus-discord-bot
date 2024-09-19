@@ -1,9 +1,9 @@
 import discord
 from discord import app_commands
 import requests
-from config import DISCORD_BOT_TOKEN
-from gatus import get_service_status, get_service_group, GatusStatusError, nanoseconds_to_human_readable
-from gatus_embeds import GatusHealthEmbed, GatusGroupHealthEmbed
+from src.config import DISCORD_BOT_TOKEN
+from src.gatus import get_service_status, get_service_group, GatusStatusError, nanoseconds_to_human_readable
+from src.gatus_embeds import GatusHealthEmbed, GatusGroupHealthEmbed
 
 bot = discord.Client(intents=discord.Intents.default())
 tree = app_commands.CommandTree(bot)
@@ -38,5 +38,6 @@ async def on_guild_join(guild):
     await tree.sync(guild=guild)
     print(f"Synced commands to guild: {guild.name}")
 
-# Run the bot
-bot.run(DISCORD_BOT_TOKEN)
+
+if __name__ == "__main__":
+    bot.run(DISCORD_BOT_TOKEN)

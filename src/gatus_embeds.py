@@ -1,7 +1,7 @@
 import discord
 
-from gatus import nanoseconds_to_human_readable
-from constants import EMOJI_HELMET, EMOJI_SUCCESS, EMOJI_WARNING, EMOJI_FAILURE
+from src.gatus import nanoseconds_to_human_readable
+from src.constants import EMOJI_HELMET, EMOJI_SUCCESS, EMOJI_WARNING, EMOJI_FAILURE
 
 class GatusEmbed(discord.Embed):
     def __init__(self, title, description, color):
