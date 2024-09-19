@@ -4,7 +4,7 @@ import discord
 
 from src.gatus_embeds import GatusEmbed, GatusHealthEmbed, GatusGroupHealthEmbed
 from src.gatus import nanoseconds_to_human_readable
-from src.constants import EMOJI_HELMET, EMOJI_SUCCESS, EMOJI_WARNING
+from src.constants import EMOJI_FAILURE, EMOJI_HELMET, EMOJI_SUCCESS, EMOJI_WARNING
 
 class TestGatusHealthEmbed(unittest.TestCase):
     def setUp(self):
@@ -37,6 +37,18 @@ class TestGatusHealthEmbed(unittest.TestCase):
         self.assertIn(":white_check_mark: Avg Ping", [field.name for field in embed.fields])
         self.assertIn(":white_check_mark: Max Ping", [field.name for field in embed.fields])
 
+    def test_get_ping_emoji(self):
+        embed = GatusHealthEmbed(self.mock_service_status)
+
+        # Test good threshold
+        self.assertEqual(embed._get_ping_emoji(50, 100, 200), EMOJI_SUCCESS)
+
+        # Test warning threshold
+        self.assertEqual(embed._get_ping_emoji(150, 100, 200), EMOJI_WARNING)
+
+        # Test failure threshold
+        self.assertEqual(embed._get_ping_emoji(250, 100, 200), EMOJI_FAILURE)
+
 class TestGatusGroupHealthEmbed(unittest.TestCase):
     def setUp(self):
         self.mock_service = Mock()
@@ -47,7 +59,6 @@ class TestGatusGroupHealthEmbed(unittest.TestCase):
         embed = GatusGroupHealthEmbed("TestGroup", [self.mock_service])
         self.assertEqual(embed.title, f"{EMOJI_HELMET} **Gatus Group Health**")
         self.assertEqual(embed.description, "Status for group **TestGroup**")
-        self.assertEqual(embed.color, discord.Color.green())
 
     def test_set_group_status_all_up(self):
         embed = GatusGroupHealthEmbed("TestGroup", [self.mock_service])
@@ -60,6 +71,15 @@ class TestGatusGroupHealthEmbed(unittest.TestCase):
         embed = GatusGroupHealthEmbed("TestGroup", [self.mock_service, mock_service_down])
         self.assertEqual(embed.fields[0].name, "Group Status")
         self.assertEqual(embed.fields[0].value, EMOJI_WARNING)
+        self.assertEqual(embed.color, discord.Color.yellow())
+
+    def test_set_group_status_all_down(self):
+        mock_service_down = Mock()
+        mock_service_down.status = [Mock(success=False)]
+        embed = GatusGroupHealthEmbed("TestGroup", [mock_service_down])
+        self.assertEqual(embed.fields[0].name, "Group Status")
+        self.assertEqual(embed.fields[0].value, EMOJI_FAILURE)
+        self.assertEqual(embed.color, discord.Color.red())
 
     def test_add_service_statuses(self):
         embed = GatusGroupHealthEmbed("TestGroup", [self.mock_service])
