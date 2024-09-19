@@ -93,17 +93,3 @@ def nanoseconds_to_human_readable(ns: int) -> str:
         remaining_minutes = int((seconds % 3600) / 60)
         remaining_seconds = seconds % 60
         return f"{hours} h {remaining_minutes} min {remaining_seconds:.2f} s"
-
-
-def main():
-    try:
-        print(get_all_monitors())
-        service_name = "ozeliurs-com"
-        service_status = get_service_status(service_name)
-        print(service_status)
-    except GatusStatusError as e:
-        print(e)
-
-
-if __name__ == "__main__":
-    main()
