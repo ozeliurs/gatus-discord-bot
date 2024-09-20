@@ -11,4 +11,4 @@ COPY src /app/src
 
 USER nonroot
 
-CMD ["python", "/app/src/main.py"]
+CMD ["python", "-m", "src.main"]
